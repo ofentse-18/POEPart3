@@ -22,4 +22,9 @@ jobs:
         cache: maven
 
     - name: Build and Run Tests with Maven
-      run: mvn -B test --file pom.xml
+      run: |
+        if [ -f "pom.xml" ]; then
+          mvn -B test --file pom.xml
+        else
+          mvn -B test --file POEPart3/pom.xml
+        fi
